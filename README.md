@@ -20,7 +20,7 @@ python youtube_comment.py
 
 Also, you can create and run a single exe file. 
 ```
-c:~~~~\youtube-comment-crawler> pyinstaller --onefile -f --add-binary "chromedriver.exe";"." youtube_comment.py
+c:~~~~\youtube-comment-crawler> pyinstaller --onefile -F --add-binary "chromedriver.exe";"." youtube_comment.py
 ```
 
 When run the command, an exe file will be created in the dist folder.
