@@ -1,5 +1,5 @@
-# youtube_comment_crawler
-You can extract YouTube comments without using the Youtube API. (username, comment) and It can be saved as txt,xlsx file. (default:xlsx) <br>
+# Simple-Youtube-Comment-Crawler
+You can extract YouTube comments using Selenium. (username, comment) and It can be saved as txt,xlsx file. (default:xlsx) <br>
 Just enter your YouTube video ID and you can save the comment in xlsx file.
 The xlsx file is saved with a name that includes the current date and time.
 
