@@ -8,9 +8,9 @@ The xlsx file is saved with a name that includes the current date and time.
 + A YouTube video ID / ( e.g. 'https://www.youtube.com/watch?v='+ID
 
 ## Module
-+ You can install what you need to run the program with the freeze module.
++ You can install what you need to run the program with requirements.txt
 ```
-pip freeze > requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Usage
