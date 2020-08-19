@@ -13,7 +13,6 @@ Just enter your YouTube video ID and you can save the comment.
 ## Usage
 You can run py files on cmd or editor.<br>
 Also, you can create and run a single exe file. 
-<pre><code>
 '''
 ㄴㅁㅇㅁㄴㅇ
 '''
