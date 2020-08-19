@@ -11,5 +11,7 @@ Just enter your YouTube video ID and you can save the comment.
 + Run 'pip freeze > requirements.txt' on the downloaded folder. 
 
 ## Usage
-''' You can run py files on cmd or editor.
-Also, you can create and run a single exe file. '''
+''' 
+You can run py files on cmd or editor.
+Also, you can create and run a single exe file. 
+'''
