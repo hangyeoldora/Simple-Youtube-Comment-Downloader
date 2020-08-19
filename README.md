@@ -9,7 +9,9 @@ The xlsx file is saved with a name that includes the current date and time.
 
 ## Module
 + You can install what you need to run the program with the freeze module.
-+ Run 'pip freeze > requirements.txt' on the downloaded folder. 
+```
+pip freeze > requirements.txt
+```
 
 ## Usage
 You can run py files on cmd or editor.
