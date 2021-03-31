@@ -29,7 +29,7 @@ httplib2==0.18.0
 idna==2.9
 isodate==0.6.0
 jdcal==1.4.1
-lxml==4.5.0
+lxml==4.6.3
 marshmallow==3.5.1
 marshmallow-enum==1.5.1
 mypy-extensions==0.4.3
