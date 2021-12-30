@@ -1,11 +1,12 @@
 # Youtube username, comment crawler (Auto scroll)
 # developed by LHG
-# Python 3.7
+# Python 3.7.1
 # You need to install this module => selenium, BeautifulSoup, Pandas
-# check your chrome version! (included chrome webdriver version : 84)
+# check your chrome version! (included chrome webdriver version : 96)
 # download chrome webdriver => http://chromedriver.chromium.org/downloads
 from selenium import webdriver as wd
 from bs4 import BeautifulSoup
+from selenium.webdriver.chrome.options import Options
 
 from webdriver_manager.chrome import ChromeDriverManager
 import sys, os, time, re
@@ -23,6 +24,7 @@ chrome_options.add_argument("lang=ko_KR")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
+
 # chrome webdriver path
 # you need to make .spec file and input your webdriver path -> pathex
 def resource_path(relative_path):
@@ -32,12 +34,14 @@ def resource_path(relative_path):
         base_path = os.path.dirname(__file__)
     return os.path.join(base_path, relative_path)
 
-driver = wd.Chrome(resource_path('./chromedriver.exe'), options=chrome_options)
+options = Options()
+options.binary_location= 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+driver = wd.Chrome('./chromedriver.exe', chrome_options = options)
 
 # Enter the YouTube url
-user_input=input('Enter Youtube ID:')
-# example:7fBJu2WDI3c/8SYI9mtjBSc
-url = 'https://www.youtube.com/watch?v='+user_input
+user_input = input('Enter Youtube ID:')
+# example:uCzo06zAQ1c/BJI96GLTq5A
+url = 'https://www.youtube.com/watch?v=' + user_input
 
 driver.get(url)
 
@@ -55,18 +59,18 @@ html_source = driver.page_source
 driver.close()
 soup = BeautifulSoup(html_source, 'lxml')
 
-youtube_username = soup.select('div#header-author > a > span')
-youtube_comments = soup.select('yt-formatted-string#content-text')
+youtube_username = soup.select('#author-text > span')
+youtube_comments = soup.select('#content-text')
 
 list_youtube_username = []
 list_youtube_comments = []
-text=""
+text = ""
 
 for i in range(len(youtube_username)):
     str_tmp = str(youtube_username[i].text)
     str_tmp = str_tmp.replace('\n', '')
     str_tmp = str_tmp.replace('\t', '')
-    str_tmp = str_tmp.replace(' ','')
+    str_tmp = str_tmp.replace(' ', '')
     list_youtube_username.append(str_tmp)
 
     str_tmp = str(youtube_comments[i].text)
@@ -77,8 +81,8 @@ for i in range(len(youtube_username)):
 
 # --- dataframe (data refinement) / pandas module ---
 # here is a description site -> https://pandas.pydata.org/docs/user_guide/index.html
-pd_data = {"Username":list_youtube_username, "Comment":list_youtube_comments}
+pd_data = {"Username": list_youtube_username, "Comment": list_youtube_comments}
 youtube_df = pd.DataFrame(pd_data)
 print(youtube_df)
 print('----- Done Well -----')
-youtube_df.to_excel(t_str+"_"+'youtube_crawling.xlsx')
+youtube_df.to_excel(t_str + "_" + 'youtube_crawling.xlsx')
